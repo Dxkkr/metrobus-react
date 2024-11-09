@@ -37,7 +37,7 @@ const Home: React.FC = () => {
           </button>
         </section>
       ) : (
-        <p>Carregando...</p>
+        <p>Carregando.. .</p>
       )}
     </>
   );
