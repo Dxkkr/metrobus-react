@@ -39,6 +39,7 @@ const Home: React.FC = () => {
           </section>
         </>
       ) : (
+        
         <p>Carregando...</p>
       )}
     </>
