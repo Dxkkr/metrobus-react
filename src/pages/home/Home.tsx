@@ -4,6 +4,7 @@ import { supabase } from "../../client/supabaseClient";
 import { User } from "@supabase/supabase-js";
 import '../../styles/Home.css'; 
 
+
 const Home: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
@@ -18,24 +19,25 @@ const Home: React.FC = () => {
         setUser(data.user);
       }
     };
-
     fetchUser();
   }, [navigate]);
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    navigate("/login");
-  };
 
   return (
     <>
       {user ? (
-        <section>
-          <h2>Bem-vindo, {user.email}</h2>
-          <button role="button" className="golden-button" onClick={handleLogout}>
-            <span className="golden-text">Sair</span>
-          </button>
-        </section>
+        <>
+          <section className="umacoisa">
+            <h2 className="Welcome">Bem-vindo, {user.email}</h2>
+
+            <div className="Start">
+              <h1 className="h1-title">Pontualidade</h1>
+              <h2 className="h2-sub">é nossa prioridade</h2>
+            </div>
+
+            <div className="something">
+            </div>
+          </section>
+        </>
       ) : (
         <p>Carregando...</p>
       )}

@@ -18,9 +18,9 @@ const Login: React.FC = () => {
         password,
       });
 
-      if (error) throw error; // Se ocorrer um erro, lança uma exceção
+      if (error) throw error;
 
-      const user = data?.user; // Acesso correto ao usuário
+      const user = data?.user;
 
       if (user) {
         console.log("Usuário logado:", user);
@@ -29,7 +29,6 @@ const Login: React.FC = () => {
         setError("Usuário não encontrado");
       }
     } catch (err: unknown) {
-      // Verifique se 'err' é uma instância de 'Error' e extraia a mensagem
       if (err instanceof Error) {
         setError(err.message);
       } else {
@@ -41,15 +40,29 @@ const Login: React.FC = () => {
   return (
     <>
       <section>
-        <div>
+        <div className="login-container">
+          {/* Apenas os botões do estilo macOS */}
+          <div className="mac-style-buttons">
+            <div className="circle red"></div>
+            <div className="circle yellow"></div>
+            <div className="circle green"></div>
+          </div>
           <form className="form" onSubmit={handleLogin}>
-            <h2>Login</h2>
+            <h2 style={{ marginTop: "40px" }}>Login</h2>
+
             <div>
               <div className="flex-column">
                 <label>Email </label>
               </div>
               <div className="inputForm">
-                <input type="text" className="input" placeholder="Entre com seu email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Entre com seu email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </div>
             </div>
 
@@ -58,17 +71,27 @@ const Login: React.FC = () => {
                 <label>Senha </label>
               </div>
               <div className="inputForm">
-                <input type="password" className="input" placeholder="Entre com sua senha" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <input
+                  type="password"
+                  className="input"
+                  placeholder="Entre com sua senha"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
               </div>
-              {error && <div style={{ color: "red", padding:"10px 0" }}>{error}</div>}
-              <div className="flex-row">
-                <span className="span">Esqueceu a senha?</span>
-              </div>
+            </div>
+
+            {error && <div style={{ color: "red", padding: "10px 0" }}>{error}</div>}
+
+            <div className="flex-row">
+              <span className="span">Esqueceu a senha?</span>
             </div>
 
             <button className="button-submit">Conectar</button>
             <p className="p">
-              Não tem uma conta? <span className="span">cadastre-se</span>
+              Não tem uma conta? 
+              <span className="span"><a href="/Signup">cadastre-se</a></span>
             </p>
           </form>
         </div>

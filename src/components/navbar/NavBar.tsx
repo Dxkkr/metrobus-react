@@ -10,7 +10,7 @@ function NavBar() {
       <nav className="container-navigation">
         <ul className="container-link">
           <li><Link to="/login"className="button1" >Login</Link></li>
-          <li><Link to="/signup" className="button">Inscreva-se</Link></li>
+          <li><Link to="/signup" className="button">User</Link></li>
         </ul>
       </nav>
 
