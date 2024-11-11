@@ -1,36 +1,41 @@
-.Welcome{
-  margin-top: -20px;
+.Welcome {
+  margin-top: 0;
 }
 
-.Start {
+.Title {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
+}
+
+/* Start - Title */
+.title-sub{
+  margin-top: -95%;
 }
 
 .h1-title {
   font-size: 2em;
   font-weight: bold;
-  margin-bottom: 40px;
-  margin-left: -50px;
+  margin-bottom: 10px;
+  margin-left: -1%;
 }
 
 .h2-sub {
   font-size: 1.5em;
   font-weight: normal;
-  margin-left: 50px;
   font-style: italic;
+  margin-top: 25px;
 }
+/* End */
 
-.titulo .sub{
-  margin-top: -50px;
-}
-
-.umacoisa{
+.umacoisa {
   height: 100vh;
   display: flex;
-  justify-content: start;
-  align-items: start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 25px;
-  margin-left: -5%;
+  margin-left: 0;
+  margin-top: 0;
 }
 
+/* swiper config */
