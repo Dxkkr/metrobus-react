@@ -1,38 +1,115 @@
-/* NavBar */
+body{
+    font-family: "Ubuntu", sans-serif;
+    --color1: #fff;
+    --color2: #181818;
+}
+
 .container-navigation {
     background-color: black;
     display: flex;
     align-items: center;
-    padding: 0 30px;
     justify-content: space-between;
     width: 100%;
     height: 10vh;
+    padding: 0 30px;
 }
 
 .container-link {
-    display: start;
-    gap: 10px;
+    display: flex;
+    flex: 1;
+    text-align: center;
 }
 
-.navitems{
-    color: white;
-    list-style: none;
+.navitems-2 {
     margin: 0;
-    padding: 0;
-    text-align: left;
 }
 
-.navitems-2{
-    color: white;
+.nav-bar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    justify-content: right;    
+    position: relative;
+    background-color: var(--color2);
+    padding: 12px 20px;
+}
+
+ul{list-style: none;}
+
+.Logo{
+    margin-right: 100px;
+    color: var(--color1);
+}
+.menu{display: flex;}
+.menu li{padding-left: 30px;}
+.menu li a{
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color1);
+    text-align: center;
+    transition: 0.15s ease-in-out;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.menu li a::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color1);
+    transition: 0.15s ease-in-out;
+}
+
+.menu li a:hover:after{width: 100%;}
+.open-menu , .close-menu{
+    position: absolute;
+    color: var(--color1);
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: none;
+}
+
+#check{display: none;}
+
+@media(max-width: 610px){
+    .menu{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 100;
+        background-color: var(--color2);
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+.open-menu , .close-menu{display: none;}
+#check:checked ~ .menu{right: 0;}
+
+.menu li{margin-top:10px}
+.menu li a {padding: 10px;}
+
+.open-menu{
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.close-menu{
+    top: 20px;
+    right: 20px;
 }
 
 /* Botão de Perfil */
-.profile-button{
+.profile-button {
     background-color: white;
     color: black;
     border-radius: 10em;
@@ -43,12 +120,10 @@
     transition: all 0.3s ease-in-out;
     border: 1px solid black;
     box-shadow: 0 0 0 0 black;
-  }
-  
-  .profile-button:hover{
+}
+
+.profile-button:hover {
     transform: translateY(-2px) translateX(-2px);
     box-shadow: 1px 4px 0 0;
     color: purple;
-  }
-
-  
+}
