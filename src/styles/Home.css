@@ -1,33 +1,6 @@
-.Welcome {
-  margin-top: 0;
-}
+/* Sections */
 
-.Title {
-  text-align: center;
-  margin-top: 40px;
-}
-
-/* Start - Title */
-.title-sub{
-  margin-top: -95%;
-}
-
-.h1-title {
-  font-size: 2em;
-  font-weight: bold;
-  margin-bottom: 10px;
-  margin-left: -1%;
-}
-
-.h2-sub {
-  font-size: 1.5em;
-  font-weight: normal;
-  font-style: italic;
-  margin-top: 25px;
-}
-/* End */
-
-.umacoisa {
+.Section1 {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,4 +11,37 @@
   margin-top: 0;
 }
 
-/* swiper config */
+/* Sections End */
+
+/* Start - Title */
+.Logo{
+  margin-top: -85%;
+  text-align: center;
+  color: black;
+  margin-bottom: -30px; /*<-- subir ou descer a frase "Pontualidade é Nossa Prioridade"*/ 
+}
+
+#text-1{
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 100px;
+  margin-left: -2%;
+}
+
+#text-2 {
+  font-size: 1.5em;
+  font-weight: normal;
+  font-style: italic;
+  margin-top: -15px; /*<-- Aproximar ou Afastar da Palavra "Pontualidade"*/
+  margin-left: 50px;
+}
+/* End */
+
+/* Headder End */
+
+/* Middle */
+.lalallal{
+  color: purple;
+}
+
+/* Middle End */
