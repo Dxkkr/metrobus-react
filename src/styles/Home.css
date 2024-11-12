@@ -15,12 +15,6 @@
   text-align: center;
 }
 
-.Logo {
-  margin-top: -50px; /* Ajuste mais controlado */
-  color: black;
-  margin-bottom: -30px;
-}
-
 .frase{
   margin-top: 100px;
 }
@@ -28,7 +22,7 @@
 #text-1 {
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: -50%;
 }
 
 #text-2 {
@@ -44,7 +38,7 @@
   justify-content: center;
   gap: 30px; /* Valor consistente */
   flex-wrap: wrap;
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 .container {

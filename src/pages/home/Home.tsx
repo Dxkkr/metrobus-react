@@ -25,10 +25,6 @@ const Home: React.FC = () => {
   return (
     <section className="Section1">
       {/* Header */}
-      <div className="Logo">
-        <h1>MetroBus</h1>
-      </div>
-      
         <div className="frase">
           <h2 id="text-1">Pontualidade</h2>
           <h2 id="text-2">é nossa prioridade</h2>

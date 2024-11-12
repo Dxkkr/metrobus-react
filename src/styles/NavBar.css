@@ -1,107 +1,54 @@
+/* NavBar */
 .container-navigation {
     background-color: black;
     display: flex;
     align-items: center;
     padding: 0 30px;
-    justify-content: end;
+    justify-content: space-between;
     width: 100%;
     height: 10vh;
 }
 
 .container-link {
-    display: flex;
+    display: start;
     gap: 10px;
 }
 
-li {
-    font-weight: 600;
+.navitems{
+    color: white;
     list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
 }
 
-li a {
+.navitems-2{
     color: white;
-    font-weight: 800;
-    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    justify-content: right;    
 }
 
-/* From Uiverse.io by JaydipPrajapati1910 */
-.button {
+/* Botão de Perfil */
+.profile-button{
     background-color: white;
     color: black;
+    border-radius: 10em;
+    font-size: 17px;
     font-weight: 600;
-    border-radius: 5px;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 1em 2em;
     cursor: pointer;
-    text-align: center;
-    align-items: center;
-    border: 2px solid white;
-}
+    transition: all 0.3s ease-in-out;
+    border: 1px solid black;
+    box-shadow: 0 0 0 0 black;
+  }
+  
+  .profile-button:hover{
+    transform: translateY(-2px) translateX(-2px);
+    box-shadow: 1px 4px 0 0;
+    color: purple;
+  }
 
-.button:hover {
-    background-color: #333;
-    color: white;
-}
-
-.button svg {
-    display: inline;
-    width: 1.3rem;
-    height: 1.3rem;
-    margin-right: 0.75rem;
-    color: white;
-}
-
-.button:focus svg {
-    animation: spin_357 0.5s linear;
-}
-
-@keyframes spin_357 {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-
-.button1 {
-    color: white;
-    font-weight: 500;
-    border-radius: 5px;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    text-align: center;
-    align-items: center;
-    border: 2px solid white;
-}
-
-.button1:hover {
-    background-color: white;
-    color: black;
-}
-
-.button1 svg {
-    display: inline;
-    width: 1.3rem;
-    height: 1.3rem;
-    margin-right: 0.75rem;
-    color: white;
-}
-
-.button1:focus svg {
-    animation: spin_357 0.5s linear;
-}
-
-@keyframes spin_357 {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
+  
