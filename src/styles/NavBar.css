@@ -40,6 +40,7 @@ ul{list-style: none;}
 .Logo{
     margin-right: 100px;
     color: var(--color1);
+    list-style: none;
 }
 .menu{display: flex;}
 .menu li{padding-left: 30px;}

@@ -41,18 +41,36 @@ const Home: React.FC = () => {
           <h1>Quem Somos?</h1>
         </div>
 
-        <div className="sub">
-        {/* Somos uma empresa dedicada a oferecer soluções integradas para o setor de transporte público, com foco em ônibus urbanos. Nossa missão é facilitar e modernizar o serviço de transporte coletivo, contribuindo para a eficiência, segurança e conforto de passageiros e operadores.
+        <div className="container-paragrafo">
+          <div className="containertxt">
+          <div className="flextext">
+            <h3 className="txt1">
+              Somos uma empresa dedicada a oferecer soluções integradas para o setor de transporte público. Com foco em ônibus urbanos. Nossa missão é facilitar e modernizar o serviço de transporte coletivo, contribuindo para a eficiência, segurança e conforto de passageiros e operadores.
+            </h3>
+<hr />
+            <h3 className="txt1">
+              Com anos de experiência na indústria de transportes, fornecemos uma ampla gama de serviços e produtos que vão desde a manutenção de frota a gestão de rotas.
+            </h3>
+<hr />
+            <h3 className="txt1">
+            Nossas soluções ajudam operadoras de ônibus a otimizar suas operações, reduzir custos e melhorar a experiência dos usuários, ao mesmo tempo em que promovemos práticas sustentáveis para um futuro urbano mais inteligente.
+            </h3>
 
-Com anos de experiência na indústria de transportes, fornecemos uma ampla gama de serviços e produtos que vão desde a manutenção de frota até tecnologias de bilhetagem eletrônica e gestão de rotas. Nossas soluções ajudam operadoras de ônibus a otimizar suas operações, reduzir custos e melhorar a experiência dos usuários, ao mesmo tempo em que promovemos práticas sustentáveis para um futuro urbano mais inteligente.
-
-Nosso portfólio inclui:
-
-Sistemas de Bilhetagem e Pagamento Digital: Inovamos com tecnologias que facilitam o pagamento de passagens, como cartões eletrônicos e aplicativos móveis, tornando o processo mais rápido e seguro para os passageiros.
-Gestão de Frota e Monitoramento: Fornecemos ferramentas avançadas de rastreamento e monitoramento que ajudam as empresas a gerenciar e otimizar suas rotas em tempo real.
-Manutenção e Peças de Qualidade: Garantimos que as frotas estejam sempre em perfeito estado, oferecendo serviços de manutenção preventiva e corretiva, além de fornecer peças de reposição de alta qualidade.
-Soluções de Informações ao Passageiro: Implementamos sistemas que mantêm os passageiros informados sobre horários e status de ônibus em tempo real, promovendo um serviço mais transparente e eficiente.
-Nosso compromisso é com a inovação contínua e a melhoria do transporte público, colaborando para tornar as cidades mais conectadas e acessíveis. Trabalhamos lado a lado com municípios e operadores para criar um ecossistema de mobilidade urbana que seja sustentável, acessível e moderno, ajudando a transformar a experiência do transporte coletivo para melhor. */}
+<hr />
+            <h3 className="txt1">
+             Nosso portfólio inclui: <br /> <ul>
+            <li>Sistemas de Bilhetagem Digital: Inovamos com tecnologias que facilitam o recarregamento de passagens, tornando o processo mais rápido e seguro para os passageiros.</li>
+            <li>Gestão de Frota e Monitoramento: Fornecemos ferramentas avançadas de rastreamento e monitoramento que ajudam as empresas a gerenciar e otimizar suas rotas em tempo real.</li>
+            <li>Manutenção e Peças de Qualidade: Garantimos que as frotas estejam sempre em perfeito estado, oferecendo serviços de manutenção preventiva e corretiva, além de fornecer peças de reposição de qualidade.</li>
+            <li>Soluções de Informações ao Passageiro: Implementamos sistemas que mantêm os passageiros informados sobre horários e status de ônibus em tempo real, promovendo um serviço mais transparente e eficiente.</li>
+            </ul></h3>
+<hr />
+            <h3 className="txt1">
+            Nosso compromisso é com a inovação contínua e a melhoria do transporte público, colaborando para tornar as cidades mais conectadas e acessíveis. 
+            Trabalhamos lado a lado com municípios e operadores para criar um ecossistema de mobilidade urbana que seja sustentável, acessível e moderno, ajudando a transformar a experiência do transporte coletivo para melhor.
+            </h3>
+          </div>
+          </div>
         </div>
       </div>
     </section>

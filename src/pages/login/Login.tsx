@@ -42,12 +42,13 @@ const Login: React.FC = () => {
       <section>
         <div className="login-container">
           {/* Apenas os botões do estilo macOS */}
+          
+          <form className="form" onSubmit={handleLogin}>
           <div className="mac-style-buttons">
             <div className="circle red"></div>
             <div className="circle yellow"></div>
             <div className="circle green"></div>
           </div>
-          <form className="form" onSubmit={handleLogin}>
             <h2 style={{ marginTop: "40px" }}>Login</h2>
 
             <div>
@@ -82,7 +83,7 @@ const Login: React.FC = () => {
               </div>
             </div>
 
-            {error && <div style={{ color: "red", padding: "10px 0" }}>{error}</div>}
+            {error && <div style={{ color: "red", padding: "10px 0",}}>{error}</div>}
 
             <div className="flex-row">
               <span className="span">Esqueceu a senha?</span>
