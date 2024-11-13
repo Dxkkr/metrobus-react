@@ -6,23 +6,23 @@
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  margin: 0; /* Evite margin-top/margin-left redundantes */
+  margin: 0;
 }
 
 /* Title Section */
 .header {
-  position: relative; /* Ajuste para evitar problemas de layout */
+  position: relative;
   text-align: center;
 }
 
-.frase{
-  margin-top: 100px;
+.frase {
+  margin-top: 250px;
 }
 
 #text-1 {
   font-size: 3rem;
   font-weight: bold;
-  margin-top: -50%;
+  margin-top: 10%;
 }
 
 #text-2 {
@@ -36,7 +36,7 @@
 .container-geral {
   display: flex;
   justify-content: center;
-  gap: 30px; /* Valor consistente */
+  gap: 30px;
   flex-wrap: wrap;
   margin-top: 3%;
 }
@@ -62,5 +62,16 @@
   font-size: 1.25rem;
 }
 
-/* Additional Section Example */
+/* Quem Somos */
+.Infos {
+  margin-top: 9%;
+}
 
+.titulo {
+  text-align: center;
+}
+
+.sub {
+  margin-top: 50px;
+  font-size: 29px;
+}
