@@ -7,6 +7,7 @@ import '../../styles/NavBar.css'
 import { FiX } from "react-icons/fi";
 // import { FiAlignJustify } from "react-icons/fi";
 import { FiGrid } from "react-icons/fi";
+import Pass from "../../pages/Pass/Pass";
 
 
 
@@ -19,7 +20,7 @@ function NavBar() {
             <span className="menu">
             <li className="Logo"><h1>MetroBus</h1></li>
             <li className="cor"><a href="#">Horário de Ônibus</a></li>
-            <li className="cor"><a href="#">Recarga de Passe</a></li>
+            <li className="cor"><a href="/Pass">Recarga de Passe</a></li>
             <li className="cor"><a href="#">Notificações</a></li>
             <label htmlFor="check" className="close-menu"><FiX /></label>
             </span>
@@ -30,6 +31,7 @@ function NavBar() {
       </nav>
 
       <Routes>
+        <Route path="/Pass" element={<Pass />}/>
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />

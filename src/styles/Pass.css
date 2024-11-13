@@ -1,0 +1,26 @@
+.aviso{
+    text-align: center;
+}
+
+.warnText{
+    color: red;
+    animation: piscar 1s infinite;
+    justify-content: center;
+    display: block;
+}
+
+@keyframes piscar{
+    0% {
+        color:red;
+        font-size: 30px;
+    }
+    50%{
+        color:black;
+        font-size: 30px;
+    }
+    100%{
+        color: red;
+        font-size: 30px;
+    }
+}
+
