@@ -59,7 +59,6 @@
 
 .container-geral .container:nth-child(1){
   background-color: blue;
-  filter: blur(1px);
 }
 
 .container-geral .container:nth-child(2){
@@ -72,9 +71,6 @@
 
 .container-geral .container:nth-child(4){
   background-color: rgb(0, 255, 213);
-}
-.container-geral .container:nth-child(1):hover{
-  background-color: rgb(255, 0, 157);
 }
 
 .container:hover {
