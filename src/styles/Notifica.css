@@ -10,13 +10,11 @@
     position: relative;
     width: 18rem;
     height: auto;
-    background: #29292c;
     border-radius: 1rem;
     overflow: hidden;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 16px;
-    --gradient: linear-gradient(to bottom, #2eadff, #3d83ff, #7e61ff);
-    --color: #32a6ff
+    --gradient:#7e61ff;
 }
 
 .notification:before {
@@ -24,7 +22,7 @@
     content: "";
     inset: 0.0625rem;
     border-radius: 0.9375rem;
-    background: #18181b;
+    background: #18181b00;
     z-index: 2
 }
 
@@ -44,10 +42,10 @@
 }
 
 .notititle {
-    color: var(--color);
+    color: black;
     padding: 0.65rem 0.25rem 0.4rem 1.25rem;
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     transition: transform 300ms ease;
     z-index: 5;
 }
@@ -57,10 +55,20 @@
 }
 
 .notibody {
-    color: #99999d;
+    color: purple;
+    font-weight: bold;
     padding: 0 1.25rem;
     transition: transform 300ms ease;
     z-index: 5;
+    animation: coloracao 1s infinite alternate;
+}
+
+@keyframes coloracao{
+    0%{
+        color: purple;
+    } 100%{
+        color: red;
+    }
 }
 
 .notification:hover .notibody {
@@ -95,7 +103,7 @@
 }
 
 .note {
-    color: var(--color);
+    color: purple;
     position: fixed;
     top: 80%;
     left: 50%;
@@ -104,6 +112,7 @@
     font-size: 0.9rem;
     width: 75%;
 }
+
 
 .grids{
     display: flex;
