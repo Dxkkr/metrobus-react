@@ -30,10 +30,10 @@ function NavBar() {
       </nav>
 
       <Routes>
-        <Route path="/notifica" element={<Notifica/>}/>
-        <Route path="/home" element={<Home />} />
-        <Route path="/Pass" element={<Pass />}/>
         <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/notifica" element={<Notifica/>}/>
+        <Route path="/Pass" element={<Pass />}/>
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </Router>
