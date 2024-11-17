@@ -72,7 +72,6 @@ const Home: React.FC = () => {
 
       {/* Fim do Quem Somos */}
 
-3s
     </section>
   );
 };
