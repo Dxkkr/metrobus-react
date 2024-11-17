@@ -1,0 +1,16 @@
+#horario{
+    text-align: center;
+    margin-top: -85vh;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.error-message {
+    color: red;
+    background-color: #ffecec;
+    border: 1px solid #f5c2c2;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+  }

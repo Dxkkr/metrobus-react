@@ -7,6 +7,7 @@ import { FiX } from "react-icons/fi";
 import { FiGrid } from "react-icons/fi";
 import Pass from "../../pages/Pass/Pass";
 import Notifica from "../../pages/Notifica/Notifica";
+import Bustime from "../../pages/Bustime/Bustime"
 
 
 
@@ -18,7 +19,7 @@ function NavBar() {
             <input type="checkbox" id="check"/>
             <span className="menu">
             <li className="Logo"><h1><a href="/home">MetroBus</a></h1></li>
-            <li className="cor"><a href="#">Horário de Ônibus</a></li>
+            <li className="cor"><a href="/Bustime">Horário de Ônibus</a></li>
             <li className="cor"><a href="/Pass">Recarga de Passe</a></li>
             <li className="cor"><a href="/Notifica">Notificações</a></li>
             <label htmlFor="check" className="close-menu"><FiX /></label>
@@ -30,6 +31,7 @@ function NavBar() {
       </nav>
 
       <Routes>
+        <Route path="/Bustime" element={<Bustime/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/notifica" element={<Notifica/>}/>
