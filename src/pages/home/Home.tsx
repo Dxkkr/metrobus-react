@@ -24,9 +24,11 @@ const Home: React.FC = () => {
 
   return (
     <section className="Section1">
-      <div className="frase">
-        <h2 id="text-1">Pontualidade</h2>
-        <h2 id="text-2">é nossa prioridade</h2>
+      <div id="home">
+        <div className="frase">
+          <h2 id="text-1">Pontualidade</h2>
+          <h2 id="text-2">é nossa prioridade</h2>
+        </div>
       </div>
 
       <div className="container-geral">
@@ -70,11 +72,15 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      <div className="footer">
-        <div className="escrita">
-          <h3>footer</h3>
-        </div>
+    {/* Footer */}
+
+    <footer id="footer-background">
+      <div><a href="#" className="footer-title">MetroBus</a></div>
+      <div></div>
+      <div id="footer-text">
+        
       </div>
+    </footer>
     </section>
   );
 };

@@ -128,3 +128,26 @@ li {
   background-color: rgb(255, 0, 0);
   box-sizing: 100px;
 }
+
+.fundo{
+  background-color: #252525;
+  color: white;
+}
+
+.textos1{
+  text-align: center;
+}
+
+#footer-background{
+  background-color: #252525;
+}
+
+#footer-text{
+
+}
+
+.footer-title{
+  color: white;
+  font-size: 50px;
+  font-weight: bolder;
+}
