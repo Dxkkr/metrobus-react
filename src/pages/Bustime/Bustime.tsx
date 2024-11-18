@@ -2,63 +2,56 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../../client/supabaseClient';
 import '../../styles/Bustime.css';
 
-interface HorarioOnibus {
+interface HorarioSemanal {
+  dia_semana: string;
   horario_partida: string;
   horario_chegada: string;
-  linha_id: {
-    nome: string;
-  };
-  parada_inicio: {
-    nome: string;
-  };
-  parada_fim: {
-    nome: string;
-  };
+  linha_nome: string;
+  parada_inicio_nome: string;
+  parada_fim_nome: string;
 }
 
 function Bustime() {
-  const [horarios, setHorarios] = useState<HorarioOnibus[]>([]);
+  const [horarios, setHorarios] = useState<HorarioSemanal[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const fetchHorarios = async () => {
     try {
-      // Ajuste na consulta para buscar os dados relacionados corretamente
-      const { data, error } = await supabase
-        .from('horarios_onibus')
-        .select(`
-          horario_partida,
-          horario_chegada,
-          linha_id:linhas (
-            nome
-          ),
-          parada_inicio:paradas!horarios_onibus_parada_inicio_fkey (
-            nome
-          ),
-          parada_fim:paradas!horarios_onibus_parada_fim_fkey (
-            nome
-          )
-        `);
+      console.log('Iniciando busca de horários...');
 
-      console.log('Dados retornados:', data); // Verifica os dados
+      const { data, error } = await supabase
+        .from('horarios_semanais')
+        .select(`
+          dia_semana,
+          horario,
+          linhas (nome),
+          parada_inicio:paradas!fk_parada_inicio (nome),
+          parada_fim:paradas!fk_parada_fim (nome)
+        `);
 
       if (error) {
         console.error('Erro ao buscar horários:', error);
         setError(`Erro ao buscar horários: ${error.message}`);
-        return; // Sai da função em caso de erro
+        return;
       }
 
-      if (data) {
-        // Corrigir o tipo de dado retornado do Supabase
-        const formattedData: HorarioOnibus[] = data.map((item: any) => ({
-          horario_partida: item.horario_partida,
-          horario_chegada: item.horario_chegada,
-          linha_id: item.linha_id ? { nome: item.linha_id.nome } : { nome: 'N/A' }, // Garantindo que seja um objeto
-          parada_inicio: item.parada_inicio ? { nome: item.parada_inicio.nome } : { nome: 'N/A' },
-          parada_fim: item.parada_fim ? { nome: item.parada_fim.nome } : { nome: 'N/A' },
+      console.log('Dados retornados:', data);
+
+      if (data && data.length > 0) {
+        const formattedData: HorarioSemanal[] = data.map((item: any) => ({
+          dia_semana: item.dia_semana || 'N/A',
+          horario_partida: item.horario || 'N/A', // Usando 'item.horario' diretamente
+          horario_chegada: 'N/A', // Atualize isso conforme necessário
+          linha_nome: item.linhas ? item.linhas.nome : 'N/A',
+          parada_inicio_nome: item.parada_inicio ? item.parada_inicio.nome : 'N/A',
+          parada_fim_nome: item.parada_fim ? item.parada_fim.nome : 'N/A',
         }));
 
         setHorarios(formattedData);
-        setError(null); // Limpa o erro caso os dados sejam retornados
+        setError(null);
+      } else {
+        console.warn('Nenhum dado encontrado.');
+        setHorarios([]);
       }
     } catch (err) {
       console.error('Erro geral na consulta:', err);
@@ -68,7 +61,7 @@ function Bustime() {
 
   useEffect(() => {
     fetchHorarios();
-  }, []); // Garante que o efeito só rode uma vez
+  }, []);
 
   return (
     <section className="Times">
@@ -81,29 +74,32 @@ function Bustime() {
       {horarios.length === 0 && !error && <p>Nenhum dado encontrado.</p>}
 
       {/* Renderiza os horários em formato de tabela */}
-      <table>
-        <thead>
-          <tr>
-            <th>Linha</th>
-            <th>Partida</th>
-            <th>Chegada</th>
-            <th>Parada Inicial</th>
-            <th>Parada Final</th>
-          </tr>
-        </thead>
-        <tbody>
-          {horarios.map((horario, index) => (
-            <tr key={index}>
-              {/* Exibe o nome da linha corretamente */}
-              <td>{horario.linha_id?.nome || 'N/A'}</td>
-              <td>{horario.horario_partida}</td>
-              <td>{horario.horario_chegada}</td>
-              <td>{horario.parada_inicio?.nome || 'N/A'}</td>
-              <td>{horario.parada_fim?.nome || 'N/A'}</td>
+      {horarios.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>Dia da Semana</th>
+              <th>Linha</th>
+              <th>Partida</th>
+              <th>Chegada</th>
+              <th>Parada Inicial</th>
+              <th>Parada Final</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {horarios.map((horario, index) => (
+              <tr key={index}>
+                <td>{horario.dia_semana}</td>
+                <td>{horario.linha_nome}</td>
+                <td>{horario.horario_partida}</td>
+                <td>{horario.horario_chegada}</td>
+                <td>{horario.parada_inicio_nome}</td>
+                <td>{horario.parada_fim_nome}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </section>
   );
 }
