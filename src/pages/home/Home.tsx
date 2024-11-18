@@ -70,8 +70,11 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Fim do Quem Somos */}
-
+      <div className="footer">
+        <div className="escrita">
+          <h3>footer</h3>
+        </div>
+      </div>
     </section>
   );
 };

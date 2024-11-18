@@ -124,3 +124,7 @@ li {
   margin-left: 20px;
 }
 
+.footer{
+  background-color: rgb(255, 0, 0);
+  box-sizing: 100px;
+}
