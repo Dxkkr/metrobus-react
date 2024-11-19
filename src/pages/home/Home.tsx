@@ -72,7 +72,7 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-    {/* Footer */}
+   {/* Footer */}
 
     <footer id="footer-background">
       <div><a href="#" className="footer-title">MetroBus</a></div>

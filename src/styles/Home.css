@@ -151,3 +151,31 @@ li {
   font-size: 50px;
   font-weight: bolder;
 }
+
+/* Contêiner para a barra de pesquisa */
+.search-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Ícone da lupa */
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #888;
+  pointer-events: none;
+}
+
+/* Campo de entrada com espaçamento para o ícone */
+.search-input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

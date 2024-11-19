@@ -3,16 +3,13 @@ import { supabase } from '../../client/supabaseClient';
 import '../../styles/Bustime.css';
 
 interface HorarioSemanal {
-  dia_semana: string;
-  horario_partida: string;
-  horario_chegada: string;
   linha_nome: string;
-  parada_inicio_nome: string;
-  parada_fim_nome: string;
 }
 
 function Bustime() {
   const [horarios, setHorarios] = useState<HorarioSemanal[]>([]);
+  const [filteredHorarios, setFilteredHorarios] = useState<HorarioSemanal[]>([]);
+  const [searchLinha, setSearchLinha] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
 
   const fetchHorarios = async () => {
@@ -22,11 +19,7 @@ function Bustime() {
       const { data, error } = await supabase
         .from('horarios_semanais')
         .select(`
-          dia_semana,
-          horario,
-          linhas (nome),
-          parada_inicio:paradas!fk_parada_inicio (nome),
-          parada_fim:paradas!fk_parada_fim (nome)
+          linhas (nome)
         `);
 
       if (error) {
@@ -39,23 +32,39 @@ function Bustime() {
 
       if (data && data.length > 0) {
         const formattedData: HorarioSemanal[] = data.map((item: any) => ({
-          dia_semana: item.dia_semana || 'N/A',
-          horario_partida: item.horario || 'N/A', // Usando 'item.horario' diretamente
-          horario_chegada: 'N/A', // Atualize isso conforme necessário
           linha_nome: item.linhas ? item.linhas.nome : 'N/A',
-          parada_inicio_nome: item.parada_inicio ? item.parada_inicio.nome : 'N/A',
-          parada_fim_nome: item.parada_fim ? item.parada_fim.nome : 'N/A',
         }));
 
-        setHorarios(formattedData);
+        // Ordenando os dados em ordem alfabética pelo nome da linha
+        const sortedData = formattedData.sort((a, b) =>
+          a.linha_nome.localeCompare(b.linha_nome)
+        );
+
+        setHorarios(sortedData);
+        setFilteredHorarios(sortedData);
         setError(null);
       } else {
         console.warn('Nenhum dado encontrado.');
         setHorarios([]);
+        setFilteredHorarios([]);
       }
     } catch (err) {
       console.error('Erro geral na consulta:', err);
       setError(`Erro geral na consulta: ${(err as Error).message}`);
+    }
+  };
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.toLowerCase();
+    setSearchLinha(value);
+
+    if (value === '') {
+      setFilteredHorarios(horarios);
+    } else {
+      const filtered = horarios.filter((horario) =>
+        horario.linha_nome.toLowerCase().includes(value)
+      );
+      setFilteredHorarios(filtered);
     }
   };
 
@@ -65,36 +74,35 @@ function Bustime() {
 
   return (
     <section className="Times">
-      <h1 id="horario">Horário de Ônibus</h1>
+      <h1 id="horario">Linhas de Ônibus</h1>
+
+      {/* Campo de busca */}
+      <input
+        type="text"
+        placeholder="Buscar por nome da linha..."
+        value={searchLinha}
+        onChange={handleSearch}
+        className="search-input"
+      />
 
       {/* Mensagem de erro */}
       {error && <div className="error-message">{error}</div>}
 
       {/* Caso nenhum dado seja encontrado */}
-      {horarios.length === 0 && !error && <p>Nenhum dado encontrado.</p>}
+      {filteredHorarios.length === 0 && !error && <p>Nenhum dado encontrado.</p>}
 
       {/* Renderiza os horários em formato de tabela */}
-      {horarios.length > 0 && (
+      {filteredHorarios.length > 0 && (
         <table>
           <thead>
             <tr>
-              <th>Dia da Semana</th>
               <th>Linha</th>
-              <th>Partida</th>
-              <th>Chegada</th>
-              <th>Parada Inicial</th>
-              <th>Parada Final</th>
             </tr>
           </thead>
           <tbody>
-            {horarios.map((horario, index) => (
+            {filteredHorarios.map((horario, index) => (
               <tr key={index}>
-                <td>{horario.dia_semana}</td>
                 <td>{horario.linha_nome}</td>
-                <td>{horario.horario_partida}</td>
-                <td>{horario.horario_chegada}</td>
-                <td>{horario.parada_inicio_nome}</td>
-                <td>{horario.parada_fim_nome}</td>
               </tr>
             ))}
           </tbody>
