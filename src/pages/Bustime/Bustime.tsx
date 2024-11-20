@@ -3,68 +3,54 @@ import { supabase } from '../../client/supabaseClient';
 import '../../styles/Bustime.css';
 
 interface HorarioSemanal {
+  horario_partida: string;
+  horario_chegada: string;
   linha_nome: string;
+  parada_inicio_nome: string;
+  parada_fim_nome: string;
 }
 
 function Bustime() {
   const [horarios, setHorarios] = useState<HorarioSemanal[]>([]);
-  const [filteredHorarios, setFilteredHorarios] = useState<HorarioSemanal[]>([]);
-  const [searchLinha, setSearchLinha] = useState<string>('');
+  const [selectedLinha, setSelectedLinha] = useState<string | null>(null); // Linha selecionada
+  const [modalHorarios, setModalHorarios] = useState<HorarioSemanal[]>([]); // Horários da linha no modal
   const [error, setError] = useState<string | null>(null);
 
   const fetchHorarios = async () => {
     try {
-      console.log('Iniciando busca de horários...');
-
       const { data, error } = await supabase
         .from('horarios_semanais')
         .select(`
-          linhas (nome)
+          horario,
+          linhas (nome),
+          parada_inicio:paradas!fk_parada_inicio (nome),
+          parada_fim:paradas!fk_parada_fim (nome)
         `);
 
       if (error) {
-        console.error('Erro ao buscar horários:', error);
         setError(`Erro ao buscar horários: ${error.message}`);
         return;
       }
 
-      console.log('Dados retornados:', data);
-
-      if (data && data.length > 0) {
+      if (data) {
         const formattedData: HorarioSemanal[] = data.map((item: any) => ({
+          horario_partida: item.horario || 'N/A',
+          horario_chegada: 'N/A',
           linha_nome: item.linhas ? item.linhas.nome : 'N/A',
+          parada_inicio_nome: item.parada_inicio ? item.parada_inicio.nome : 'N/A',
+          parada_fim_nome: item.parada_fim ? item.parada_fim.nome : 'N/A',
         }));
 
-        // Ordenando os dados em ordem alfabética pelo nome da linha
+        // Ordenando os dados alfabeticamente pelo nome da linha
         const sortedData = formattedData.sort((a, b) =>
           a.linha_nome.localeCompare(b.linha_nome)
         );
 
         setHorarios(sortedData);
-        setFilteredHorarios(sortedData);
         setError(null);
-      } else {
-        console.warn('Nenhum dado encontrado.');
-        setHorarios([]);
-        setFilteredHorarios([]);
       }
     } catch (err) {
-      console.error('Erro geral na consulta:', err);
       setError(`Erro geral na consulta: ${(err as Error).message}`);
-    }
-  };
-
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value.toLowerCase();
-    setSearchLinha(value);
-
-    if (value === '') {
-      setFilteredHorarios(horarios);
-    } else {
-      const filtered = horarios.filter((horario) =>
-        horario.linha_nome.toLowerCase().includes(value)
-      );
-      setFilteredHorarios(filtered);
     }
   };
 
@@ -72,41 +58,69 @@ function Bustime() {
     fetchHorarios();
   }, []);
 
+  const openModal = (linhaNome: string) => {
+    // Filtra os horários da linha selecionada e abre o modal
+    const horariosDaLinha = horarios.filter((horario) => horario.linha_nome === linhaNome);
+    setModalHorarios(horariosDaLinha);
+    setSelectedLinha(linhaNome);
+  };
+
+  const closeModal = () => {
+    setSelectedLinha(null);
+    setModalHorarios([]);
+  };
+
   return (
     <section className="Times">
-      <h1 id="horario">Linhas de Ônibus</h1>
-
-      {/* Campo de busca */}
-      <input
-        type="text"
-        placeholder="Buscar por nome da linha..."
-        value={searchLinha}
-        onChange={handleSearch}
-        className="search-input"
-      />
+      <h1 id="horario">Horário de Ônibus</h1>
 
       {/* Mensagem de erro */}
       {error && <div className="error-message">{error}</div>}
 
-      {/* Caso nenhum dado seja encontrado */}
-      {filteredHorarios.length === 0 && !error && <p>Nenhum dado encontrado.</p>}
-
-      {/* Renderiza os horários em formato de tabela */}
-      {filteredHorarios.length > 0 && (
-        <table>
-          <thead>
-            <tr>
-              <th>Linha</th>
+      {/* Renderiza a tabela de linhas */}
+      <table>
+        <thead>
+          <tr>
+            <th>Linha</th>
+          </tr>
+        </thead>
+        <tbody>
+          {horarios.map((horario, index) => (
+            <tr key={index} onClick={() => openModal(horario.linha_nome)} className="clickable-row">
+              <td>{horario.linha_nome}</td>
             </tr>
-          </thead>
-          <tbody>
-            {filteredHorarios.map((horario, index) => (
-              <tr key={index}>
-                <td>{horario.linha_nome}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          ))}
+        </tbody>
+      </table>
+
+      {/* Modal */}
+      {selectedLinha && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2 className='nome-linha'>Horários da Linha: {selectedLinha}</h2>
+            <button onClick={closeModal} className="close-modal-btn">X</button>
+            <table>
+              <thead>
+                <tr>
+                  <th>Partida</th>
+                  <th>Chegada</th>
+                  <th>Parada Inicial</th>
+                  <th>Parada Final</th>
+                </tr>
+              </thead>
+              <tbody>
+                {modalHorarios.map((horario, index) => (
+                  <tr key={index}>
+                    <td>{horario.horario_partida}</td>
+                    <td>{horario.horario_chegada}</td>
+                    <td>{horario.parada_inicio_nome}</td>
+                    <td>{horario.parada_fim_nome}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       )}
     </section>
   );
