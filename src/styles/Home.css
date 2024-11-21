@@ -8,7 +8,7 @@
 }
 
 .video-container {
-  position: relative;
+  position: static;
   width: 210vh;
   height: 100vh;
   overflow: hidden;
@@ -65,7 +65,7 @@
 }
 
 .card {
-  margin-top: -6vh;
+  margin-top: -5vh;
   margin-left: -3vh;
   color: black;
   z-index: 1;

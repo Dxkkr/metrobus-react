@@ -4,6 +4,7 @@ import { supabase } from "../../client/supabaseClient";
 import { User } from "@supabase/supabase-js";
 import '@splidejs/splide/dist/css/splide.min.css';
 import '../../styles/Home.css';
+import '../../images/images.jpg'
 import myVideo from '../../images/background.mp4';
 
 const Home: React.FC = () => {
@@ -34,16 +35,12 @@ const Home: React.FC = () => {
         </video>
         <div className="blur-layer"></div>
         <div className="overlay-content">
-          <h1 className="main-title">
-            MetroBus
-          </h1>
+          <h1 className="main-title">MetroBus</h1>
           <span className="main-subtitle">Pontualidade</span>
           <span className="main-subtitle2">é Nossa Prioridade</span>
         </div>
       </div>
-      <hr style={{ width: "100%", height: "2px", border: "0", borderTop: "1px solid", backgroundColor: "black" }} />
-      <br />
-
+      <hr />
 
       <ul>
         <li style={{ listStyle: "none", marginTop: "-10px", fontSize: "35px", marginLeft: "10%", position: "relative" }}>Quem Nós Somos?</li>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../client/supabaseClient';
 import '../../styles/Bustime.css';
-
+import fotoOnibus from '../../images/images.jpg'
 interface HorarioSemanal {
   horario_partida: string;
   horario_chegada: string;
@@ -72,7 +72,10 @@ function Bustime() {
 
   return (
     <section className="Times">
+      <div className="image">
+      </div>
       <h1 id="horario">Horário de Ônibus</h1>
+        <img className='bus_photo' src={fotoOnibus}/>
 
       {/* Mensagem de erro */}
       {error && <div className="error-message">{error}</div>}
@@ -95,10 +98,25 @@ function Bustime() {
 
       {/* Modal */}
       {selectedLinha && (
+
         <div className="modal-overlay">
           <div className="modal-content">
-            <h2 className='nome-linha'>Horários da Linha: {selectedLinha}</h2>
-            <button onClick={closeModal} className="close-modal-btn">X</button>
+            <div className="tools">
+              <div className="circle">
+                <span className="red box"></span>
+              </div>
+              <div className="circle">
+                <span className="yellow box"></span>
+              </div>
+              <div className="circle">
+                <span className="green box"></span>
+              </div>
+            </div>
+            <div className="card__content">
+            </div>
+
+            <h2 className='nome-linha'>Linha: {selectedLinha}</h2>
+            <button onClick={closeModal} className="close-modal-btn"><i className="fa-regular fa-circle-xmark"></i></button>
             <table>
               <thead>
                 <tr>
