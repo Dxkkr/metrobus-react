@@ -44,11 +44,6 @@ const Login: React.FC = () => {
           {/* Apenas os botões do estilo macOS */}
           
           <form className="form" onSubmit={handleLogin}>
-          <div className="mac-style-buttons">
-            <div className="circle red"></div>
-            <div className="circle yellow"></div>
-            <div className="circle green"></div>
-          </div>
             <h2 style={{ marginTop: "40px" }}>Login</h2>
 
             <div>

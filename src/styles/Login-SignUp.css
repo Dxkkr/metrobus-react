@@ -162,33 +162,3 @@ a:hover {
 .btn:hover {
     border: 1px solid #2d79f3;
 }
-
-.mac-style-buttons {
-    gap: 10px;
-    position: relative;
-    z-index: 2;
-    top: -80px;
-    padding: 8px 0px 8px 8px;
-    height: auto;
-    display: flex;
-    width: 100%;
-    justify-content: end;
-}
-
-.circle {
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-}
-
-.red {
-    background-color: red;
-}
-
-.yellow {
-    background-color: rgb(218, 218, 0);
-}
-
-.green {
-    background-color: green;
-}

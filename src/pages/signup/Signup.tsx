@@ -47,13 +47,6 @@ const Signup: React.FC = () => {
     <section>
       <div>
         <form className="form" onSubmit={handleSignup}>
-
-        <div className="mac-style-buttons">
-            <div className="circle red"></div>
-            <div className="circle yellow"></div>
-            <div className="circle green"></div>
-          </div>
-
           <h2 className="SignUp" style={{ marginTop: '50px' }}>Inscrever-se</h2>
 
           {/* Campo para Email */}

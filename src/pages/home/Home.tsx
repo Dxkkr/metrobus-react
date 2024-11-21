@@ -4,6 +4,7 @@ import { supabase } from "../../client/supabaseClient";
 import { User } from "@supabase/supabase-js";
 import '@splidejs/splide/dist/css/splide.min.css';
 import '../../styles/Home.css';
+import myVideo from '../../images/background.mp4';
 
 const Home: React.FC = () => {
   const [, setUser] = useState<User | null>(null);
@@ -24,63 +25,48 @@ const Home: React.FC = () => {
 
   return (
     <section className="Section1">
-      <div id="home">
-        <div className="frase">
-          <h2 id="text-1">Pontualidade</h2>
-          <h2 id="text-2">é nossa prioridade</h2>
+
+      {/* Vídeo*/}
+      <div className="video-container">
+        <video autoPlay loop muted playsInline className="background-video">
+          <source src={myVideo} type="video/mp4" />
+          Seu navegador não suporta vídeos HTML5.
+        </video>
+        <div className="blur-layer"></div>
+        <div className="overlay-content">
+          <h1 className="main-title">
+            MetroBus
+          </h1>
+          <span className="main-subtitle">Pontualidade</span>
+          <span className="main-subtitle2">é Nossa Prioridade</span>
         </div>
       </div>
+      <br />
 
-      <div className="container-geral">
-        <div className="container">Imagem1</div>
-        <div className="container">Imagem2</div>
-        <div className="container">Imagem3</div>
-        <div className="container">Imagem4</div>
-      </div>
+  <div className="card">
+  <div className="tools">
+  <div className="circle">
+  <span className="red box"></span>
+  </div>
+  <div className="circle">
+  <span className="yellow box"></span>
+  </div>
+  <div className="circle">
+  <span className="green box"></span>
+  </div>
+  </div>
+  <div className="card__content">
+      <ul>
+        <li style={{listStyle: "none", marginTop: "-10px", fontSize:"35px", marginLeft:"10%", position: "relative"}}>Quem Nós Somos?</li>
+        <li style={{listStyle: "none", marginLeft:"45px", marginTop: "-5px"}}>Somos uma empresa que fornece serviços para empresas de Ônibus Urbanos que fornecem serviços como:</li>
+        <li style={{listStyle:"initial", marginLeft:"10%", marginBottom: ""}}>Sistemas de Bilhetagem Digital: Inovamos com tecnologias que facilitam o recarregamento de passagens, tornando o processo mais rápido e seguro para os passageiros.</li>
+        <li style={{listStyle:"initial", marginLeft:"10%"}}>Gestão de Frota e Monitoramento: Fornecemos ferramentas avançadas de rastreamento e monitoramento que ajudam as empresas a gerenciar e otimizar suas rotas em tempo real.</li>
+        <li style={{listStyle:"initial", marginLeft:"10%"}}>Soluções de Informações ao Passageiro: Implementamos sistemas que mantêm os passageiros informados sobre horários e status de ônibus em tempo real, promovendo um serviço mais transparente e eficiente.</li>
+      </ul>
+  </div>
+</div>
 
-      <div className="Infos">
-        <div className="titulo">
-          <h1>Quem Somos?</h1>
-        </div>
-
-        <div className="container-paragrafo">
-          <div className="containertxt">
-            <div className="flextext">
-              <h3 className="txt1">
-                Somos uma empresa dedicada a oferecer soluções integradas para o setor de transporte público. Com foco em ônibus urbanos. Nossa missão é facilitar e modernizar o serviço de transporte coletivo, contribuindo para a eficiência, segurança e conforto de passageiros e operadores.
-              </h3>
-              <hr />
-              <h3 className="txt1">
-                Com anos de experiência na indústria de transportes, fornecemos uma ampla gama de serviços e produtos que vão desde a manutenção de frota a gestão de rotas.
-              </h3>
-              <h3 className="txt1">
-                Nosso portfólio inclui: <br />
-                <ul>
-                  <li>Sistemas de Bilhetagem Digital: Inovamos com tecnologias que facilitam o recarregamento de passagens, tornando o processo mais rápido e seguro para os passageiros.</li>
-                  <li>Gestão de Frota e Monitoramento: Fornecemos ferramentas avançadas de rastreamento e monitoramento que ajudam as empresas a gerenciar e otimizar suas rotas em tempo real.</li>
-                  <li>Manutenção e Peças de Qualidade: Garantimos que as frotas estejam sempre em perfeito estado, oferecendo serviços de manutenção preventiva e corretiva, além de fornecer peças de reposição de qualidade.</li>
-                  <li>Soluções de Informações ao Passageiro: Implementamos sistemas que mantêm os passageiros informados sobre horários e status de ônibus em tempo real, promovendo um serviço mais transparente e eficiente.</li>
-                </ul>
-              </h3>
-              <hr />
-              <h3 className="txt1">
-                Nosso compromisso é com a inovação contínua e a melhoria do transporte público, colaborando para tornar as cidades mais conectadas e acessíveis.
-                Trabalhamos lado a lado com municípios e operadores para criar um ecossistema de mobilidade urbana que seja sustentável, acessível e moderno, ajudando a transformar a experiência do transporte coletivo para melhor.
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div>
-
-   {/* Footer */}
-
-    <footer id="footer-background">
-      <div><a href="#" className="footer-title">MetroBus</a></div>
-      <div></div>
-      <div id="footer-text">
-        
-      </div>
-    </footer>
+<h1>alksdjlakdsjalkj</h1>
     </section>
   );
 };
