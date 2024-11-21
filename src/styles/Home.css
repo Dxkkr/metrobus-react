@@ -65,9 +65,10 @@
 }
 
 .card {
-  margin-top: -7vh;
+  margin-top: -6vh;
+  margin-left: -3vh;
   color: black;
-  z-index: 4;
+  z-index: 1;
 }
 
 .card:hover {
@@ -116,17 +117,17 @@
 }
 
 .card-client {
-  background: #252525;
+  background: white;
   width: 13rem;
   padding-top: 25px;
   padding-bottom: 25px;
   padding-left: 20px;
   padding-right: 20px;
   border: 4px solid rgb(111, 0, 255);
-  box-shadow: 0 6px 10px rgb(60, 0, 138);
+  box-shadow: 0 6px 10px;
   border-radius: 10px;
   text-align: center;
-  color: #fff;
+  color: black;
   font-family: "Poppins", sans-serif;
   transition: all 0.3s ease;
 }
@@ -140,7 +141,7 @@
   object-fit: cover;
   width: 5rem;
   height: 5rem;
-  border: 4px solid white;
+  border: 4px solid black;
   border-radius: 999px;
   display: flex;
   justify-content: center;
@@ -158,7 +159,7 @@
   margin-top: 20px;
   font-weight: 600;
   font-size: 18px;
-  color: white;
+  color: black;
 }
 
 .name-client span {
