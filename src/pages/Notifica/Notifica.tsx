@@ -81,7 +81,7 @@ const Notification: React.FC = () => {
                     <p style={{ color: 'gray' }}>Nenhuma notificação disponível no momento.</p>
                 ) : (
                     notificacoes.map((notificacao) => (
-                        <div key={notificacao.id} className="card">
+                        <div key={notificacao.id} className="cards">
             <div className="tools">
               <div className="circle">
                 <span className="red box"></span>
