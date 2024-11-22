@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../../client/supabaseClient';
 import '../../styles/Bustime.css';
-import fotoOnibus from '../../images/images.jpg'
+import fotoOnibus from '../../images/images.jpg';
+
 interface HorarioSemanal {
   horario_partida: string;
   horario_chegada: string;
@@ -15,6 +16,8 @@ function Bustime() {
   const [selectedLinha, setSelectedLinha] = useState<string | null>(null); // Linha selecionada
   const [modalHorarios, setModalHorarios] = useState<HorarioSemanal[]>([]); // Horários da linha no modal
   const [error, setError] = useState<string | null>(null);
+  const [isInViewport, setIsInViewport] = useState(false); // Novo estado para o efeito
+  const modalRef = useRef<HTMLDivElement | null>(null); // Referência ao modal
 
   const fetchHorarios = async () => {
     try {
@@ -41,7 +44,6 @@ function Bustime() {
           parada_fim_nome: item.parada_fim ? item.parada_fim.nome : 'N/A',
         }));
 
-        // Ordenando os dados alfabeticamente pelo nome da linha
         const sortedData = formattedData.sort((a, b) =>
           a.linha_nome.localeCompare(b.linha_nome)
         );
@@ -54,12 +56,29 @@ function Bustime() {
     }
   };
 
+  // Observa se o modal está no viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInViewport(entry.isIntersecting); // Atualiza o estado quando o modal entra/sai do viewport
+      },
+      { threshold: 0.1 } // Ativa quando 10% do modal está visível
+    );
+
+    if (modalRef.current) {
+      observer.observe(modalRef.current);
+    }
+
+    return () => {
+      if (modalRef.current) observer.unobserve(modalRef.current);
+    };
+  }, [modalRef]);
+
   useEffect(() => {
     fetchHorarios();
   }, []);
 
   const openModal = (linhaNome: string) => {
-    // Filtra os horários da linha selecionada e abre o modal
     const horariosDaLinha = horarios.filter((horario) => horario.linha_nome === linhaNome);
     setModalHorarios(horariosDaLinha);
     setSelectedLinha(linhaNome);
@@ -73,18 +92,18 @@ function Bustime() {
   return (
     <section className="Times">
       <div className="image">
+        <img className="bus_photo" src={fotoOnibus} alt="Foto do ônibus" />
       </div>
       <h1 id="horario">Horário de Ônibus</h1>
-        <img className='bus_photo' src={fotoOnibus}/>
 
-      {/* Mensagem de erro */}
+      {/* Mensagem de Erro */}
       {error && <div className="error-message">{error}</div>}
 
-      {/* Renderiza a tabela de linhas */}
+      {/* Tabela Linhas */}
       <table>
         <thead>
           <tr>
-            <th>Linha</th>
+            <th className='❤'>Linha</th>
           </tr>
         </thead>
         <tbody>
@@ -98,9 +117,11 @@ function Bustime() {
 
       {/* Modal */}
       {selectedLinha && (
-
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div
+            className={`modal-content ${isInViewport ? 'hover-effect' : ''}`}
+            ref={modalRef} // Adicionando referência ao modal
+          >
             <div className="tools">
               <div className="circle">
                 <span className="red box"></span>
@@ -112,11 +133,11 @@ function Bustime() {
                 <span className="green box"></span>
               </div>
             </div>
-            <div className="card__content">
-            </div>
-
-            <h2 className='nome-linha'>Linha: {selectedLinha}</h2>
-            <button onClick={closeModal} className="close-modal-btn"><i className="fa-regular fa-circle-xmark"></i></button>
+            <div className="card__content"></div>
+            <h2 className="nome-linha">Linha: {selectedLinha}</h2>
+            <button onClick={closeModal} className="close-modal-btn">
+              <i className="fa-regular fa-circle-xmark"></i>
+            </button>
             <table>
               <thead>
                 <tr>

@@ -1,4 +1,4 @@
-body{
+body {
     font-family: "Ubuntu", sans-serif;
     --color1: #fff;
     --color2: #181818;
@@ -8,26 +8,26 @@ body{
     background-color: black;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start; /* Alinha a navbar à esquerda */
     width: 100%;
     height: 10vh;
     padding: 0 30px;
+    position: relative;
 }
 
 .container-link {
     display: flex;
-    flex: 1;
-    text-align: center;
+    text-align: left; /* Alinha os itens de navegação à esquerda */
 }
 
 .navitems-2 {
     margin: 0;
 }
 
-.nav-bar{
+.nav-bar {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Alinha todos os itens à esquerda */
     align-items: center;
     list-style: none;
     position: relative;
@@ -35,16 +35,25 @@ body{
     padding: 12px 20px;
 }
 
-ul{list-style: none;}
-
-.Logo{
-    margin-right: 100px;
-    color: var(--color1);
+ul {
     list-style: none;
 }
-.menu{display: flex;}
-.menu li{padding-left: 30px;}
-.menu li a{
+
+.Logo {
+    color: var(--color1);
+    list-style: none;
+    margin-right: 30px; /* Espaço entre o logo e os itens do menu */
+}
+
+.menu {
+    display: flex;
+}
+
+.menu li {
+    padding-left: 30px; /* Espaço entre os itens */
+}
+
+.menu li a {
     display: inline-block;
     text-decoration: none;
     color: var(--color1);
@@ -54,7 +63,7 @@ ul{list-style: none;}
     text-transform: uppercase;
 }
 
-.menu li a::after{
+.menu li a::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -65,21 +74,26 @@ ul{list-style: none;}
     transition: 0.15s ease-in-out;
 }
 
-.menu li a:hover:after{width: 100%;}
-.open-menu , .close-menu{
+.menu li a:hover:after {
+    width: 100%;
+}
+
+.open-menu, .close-menu {
     position: absolute;
     color: var(--color1);
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 2rem;
     display: none;
 }
 
-#check{display: none;}
+#check {
+    display: none;
+}
 
-@media(max-width: 610px){
-    .menu{
+@media (max-width: 610px) {
+    .menu {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start; /* Alinha os itens do menu à esquerda */
         justify-content: center;
         width: 80%;
         height: 100vh;
@@ -90,23 +104,35 @@ ul{list-style: none;}
         background-color: var(--color2);
         transition: all 0.2s ease-in-out;
     }
-}
 
-.open-menu , .close-menu{display: none;}
-#check:checked ~ .menu{right: 0;}
+    .menu li {
+        margin-top: 10px;
+    }
 
-.menu li{margin-top:10px}
-.menu li a {padding: 10px;}
+    .menu li a {
+        padding: 15px;
+    }
 
-.open-menu{
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-}
+    .open-menu {
+        display: block;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
 
-.close-menu{
-    top: 20px;
-    right: 20px;
+    .close-menu {
+        display: block;
+        top: 20px;
+        right: 20px;
+    }
+
+    #check:checked ~ .menu {
+        right: 0;
+    }
+
+    .menu li {
+        margin-top: 20px;
+    }
 }
 
 /* Botão de Perfil */
@@ -127,4 +153,9 @@ ul{list-style: none;}
     transform: translateY(-2px) translateX(-2px);
     box-shadow: 1px 4px 0 0;
     color: purple;
+}
+
+.link{
+    margin-top: 5px;
+    margin-left: 20px;
 }

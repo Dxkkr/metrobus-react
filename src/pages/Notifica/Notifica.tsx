@@ -8,7 +8,7 @@ interface Notificacao {
     linha: string;
     mensagem: string;
     tipo: string;
-    data_envio: string;
+    data_envio: string | null; // Permite que seja nulo
 }
 
 const Notification: React.FC = () => {
@@ -18,14 +18,21 @@ const Notification: React.FC = () => {
     // Função para buscar notificações pendentes
     const buscarNotificacoesPendentes = async () => {
         try {
+            console.log('Buscando notificações do Supabase...');
             const { data, error } = await supabase
                 .from('notificacoes')
                 .select('id, linha, mensagem, tipo, data_envio')
                 .order('data_envio', { ascending: false }); // Ordena por data mais recente
 
+            console.log('Resposta do Supabase:', { data, error });
+
             if (error) {
                 console.error('Erro retornado pelo Supabase:', error.message, error.details);
                 throw new Error(`Erro na consulta: ${error.message}`);
+            }
+
+            if (!data || data.length === 0) {
+                console.warn('Nenhuma notificação encontrada.');
             }
 
             setNotificacoes(data || []);
@@ -41,13 +48,14 @@ const Notification: React.FC = () => {
         buscarNotificacoesPendentes();
 
         // Criar uma assinatura para ouvir mudanças na tabela "notificacoes"
+        console.log('Criando assinatura Realtime para notificações...');
         const subscription = supabase
             .channel('notificacoes-changes') // Nome do canal
             .on(
                 'postgres_changes',
                 { event: '*', schema: 'public', table: 'notificacoes' },
                 (payload) => {
-                    console.log('Mudança detectada:', payload);
+                    console.log('Mudança detectada no Supabase:', payload);
                     buscarNotificacoesPendentes(); // Atualiza a lista ao detectar mudanças
                 }
             )
@@ -55,6 +63,7 @@ const Notification: React.FC = () => {
 
         // Limpa a assinatura ao desmontar o componente
         return () => {
+            console.log('Removendo assinatura do canal Realtime...');
             supabase.removeChannel(subscription);
         };
     }, []); // Executa apenas uma vez ao carregar o componente
@@ -68,14 +77,35 @@ const Notification: React.FC = () => {
                 </p>
             )}
             <div className='grids'>
-                {notificacoes.map((notificacao) => (
-                    <div key={notificacao.id} className="notification">
-                        <div className='notititle'>{notificacao.linha}</div>
-                        <div className='notibody'>{notificacao.mensagem}</div>
-                        <div className='notibody'>Tipo: {notificacao.tipo}</div>
-                        <div className='notibody'>Data de envio: {new Date(notificacao.data_envio).toLocaleString()}</div>
-                    </div>
-                ))}
+                {notificacoes.length === 0 ? (
+                    <p style={{ color: 'gray' }}>Nenhuma notificação disponível no momento.</p>
+                ) : (
+                    notificacoes.map((notificacao) => (
+                        <div key={notificacao.id} className="card">
+            <div className="tools">
+              <div className="circle">
+                <span className="red box"></span>
+              </div>
+              <div className="circle">
+                <span className="yellow box"></span>
+              </div>
+              <div className="circle">
+                <span className="green box"></span>
+              </div>
+            </div>
+            <div className="card__content"></div>
+                                <div className='notititle'>{notificacao.linha}</div>
+                                <div className='notibody'>{notificacao.mensagem}</div>
+                                <div className='notibody'>Tipo: {notificacao.tipo}</div>
+                                <div className='notibody'>
+                                    Data de envio:{' '}
+                                    {notificacao.data_envio
+                                        ? new Date(notificacao.data_envio).toLocaleString()
+                                        : 'Data indisponível'}
+                                </div>
+                            </div>
+                    ))
+                )}
             </div>
         </div>
     );

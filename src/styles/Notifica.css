@@ -14,108 +14,56 @@
     overflow: hidden;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 16px;
-    --gradient:#7e61ff;
 }
 
-.notification:before {
-    position: absolute;
-    content: "";
-    inset: 0.0625rem;
-    border-radius: 0.9375rem;
-    background: #18181b00;
-    z-index: 2
+/* Contêiner que vai segurar os cards */
+.grids {
+    display: flex;            /* Ativa o Flexbox */
+    flex-wrap: wrap;          /* Permite que os cards que não cabem na linha se movam para a linha seguinte */
+    gap: 15px;                /* Reduz o espaço entre os cards */
+    justify-content: space-evenly;  /* Alinha os cards igualmente */
 }
 
-.notification:after {
-    position: absolute;
-    content: "";
-    width: 0.25rem;
-    inset: 0.65rem auto 0.65rem 0.5rem;
-    border-radius: 0.125rem;
-    background: var(--gradient);
-    transition: transform 300ms ease;
-    z-index: 4;
-}
-
-.notification:hover:after {
-    transform: translateX(0.15rem)
-}
-
-.notititle {
-    color: black;
-    padding: 0.65rem 0.25rem 0.4rem 1.25rem;
-    font-weight: 500;
-    font-size: 1.3rem;
-    transition: transform 300ms ease;
-    z-index: 5;
-}
-
-.notification:hover .notititle {
-    transform: translateX(0.15rem)
-}
-
-.notibody {
-    color: purple;
-    font-weight: bold;
-    padding: 0 1.25rem;
-    transition: transform 300ms ease;
-    z-index: 5;
-    animation: coloracao 1s infinite alternate;
-}
-
-@keyframes coloracao{
-    0%{
-        color: purple;
-    } 100%{
-        color: red;
-    }
-}
-
-.notification:hover .notibody {
-    transform: translateX(0.25rem)
-}
-
-.notiglow,
-.notiborderglow {
-    position: absolute;
-    width: 20rem;
-    height: 20rem;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle closest-side at center, white, transparent);
-    opacity: 0;
-    transition: opacity 300ms ease;
-}
-
-.notiglow {
-    z-index: 3;
-}
-
-.notiborderglow {
-    z-index: 1;
-}
-
-.notification:hover .notiglow {
-    opacity: 0.1
-}
-
-.notification:hover .notiborderglow {
-    opacity: 0.1
-}
-
-.note {
-    color: purple;
-    position: fixed;
-    top: 80%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    font-size: 0.9rem;
-    width: 75%;
-}
-
-
-.grids{
+/* Estilo para cada card */
+.card {
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Largura do card */
+    padding: 15px;
     display: flex;
-    flex-wrap: wrap;
-    
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
 }
+
+.tools {
+    display: flex;
+    align-items: center;
+    padding: 9px;
+  }
+  
+  .circle {
+    padding: 0 4px;
+  }
+  
+  .box {
+    display: inline-block;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    border-radius: 50%;
+  }
+  
+  .red {
+    background-color: #ff605c;
+  }
+  
+  .yellow {
+    background-color: #ffbd44;
+  }
+  
+  .green {
+    background-color: #00ca4e;
+  }
