@@ -1,0 +1,26 @@
+.user-profile {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .user-profile h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .user-profile ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .user-profile li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .user-profile li strong {
+    color: #555;
+  }
+  

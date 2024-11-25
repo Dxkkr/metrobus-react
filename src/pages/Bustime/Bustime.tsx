@@ -91,9 +91,11 @@ function Bustime() {
   return (
     <section className="Times">
       <div className="image">
-        <img className="bus_photo" src={fotoOnibus} alt="Foto do ônibus" />
-        <h1 id="horario">Horário de Ônibus</h1>
-      </div>
+        <div id="blur">
+          <img className="bus_photo" src={fotoOnibus} alt="Foto do ônibus" />
+        </div>
+      </div>  
+      <h1 id="horario">Horário de Ônibus</h1>
 
       {/* Mensagem de Erro */}
       {error && <div className="error-message">{error}</div>}
