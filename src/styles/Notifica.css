@@ -1,7 +1,7 @@
 .title-notifica {
     margin-top: 10vh;
     text-align: center;
-}
+} 
 
 .notification {
     display: flex;
@@ -18,23 +18,10 @@
 
 /* Contêiner que vai segurar os cards */
 .grids {
-    display: flex;            /* Ativa o Flexbox */
-    flex-wrap: wrap;          /* Permite que os cards que não cabem na linha se movam para a linha seguinte */
-    gap: 15px;                /* Reduz o espaço entre os cards */
-    justify-content: space-evenly;  /* Alinha os cards igualmente */
-}
-
-/* Estilo para cada card */
-.cardss {
-    background-color: rgb(0, 0, 0);
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 250px; /* Largura do card */
-    padding: 15px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: white;
+    flex-wrap: wrap;
+    gap: -100px;
+    justify-content: space-evenly;
 }
 
 .tools {
@@ -42,28 +29,46 @@
     align-items: center;
     padding: 9px;
   }
-  
-  .circle {
-    padding: 0 4px;
-  }
-  
-  .box {
-    display: inline-block;
-    align-items: center;
-    width: 10px;
-    height: 10px;
-    padding: 1px;
-    border-radius: 50%;
-  }
-  
-  .red {
-    background-color: #ff605c;
-  }
-  
-  .yellow {
-    background-color: #ffbd44;
-  }
-  
-  .green {
-    background-color: #00ca4e;
-  }
+
+.card {
+  width: 190px;
+  height: 254px;
+  border-radius: 20px;
+  background: #f5f5f5;
+  position: relative;
+  padding: 1.8rem;
+  border: 3px solid #c3c6ce;
+  transition: 0.5s ease-out;
+  overflow: visible;
+ }
+ 
+ .card-details {
+  color: black;
+  height: 100%;
+  gap: .5em;
+  display: grid;
+  place-content: center;
+ }
+ 
+ .text-body {
+  color: rgb(97, 97, 97);
+  font-weight: bolder;
+ }
+ 
+ /*Text*/
+ .text-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
+ }
+ 
+ /*Hover*/
+ .card:hover {
+  border-color: #008bf8;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+ }
+ 
+ .card:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+ }

@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../../client/supabaseClient';
 import '../../styles/Bustime.css';
 import fotoOnibus from '../../images/images.jpg';
-
 interface HorarioSemanal {
   horario_partida: string;
   horario_chegada: string;
@@ -93,8 +92,8 @@ function Bustime() {
     <section className="Times">
       <div className="image">
         <img className="bus_photo" src={fotoOnibus} alt="Foto do ônibus" />
+        <h1 id="horario">Horário de Ônibus</h1>
       </div>
-      <h1 id="horario">Horário de Ônibus</h1>
 
       {/* Mensagem de Erro */}
       {error && <div className="error-message">{error}</div>}

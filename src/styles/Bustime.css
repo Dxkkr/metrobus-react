@@ -1,35 +1,38 @@
 .Times {
   width: 100%;
   max-width: 100%;
-  margin: 0;
+  margin-top: -4px;
   padding: 0;
-  border-radius: 0; /* Removendo bordas que possam interferir */
+  border-radius: 0;
 }
 
 .bus_photo {
-  width: 100vw; /* Ocupa toda a largura da tela */
-  height: 50vh; /* Opcional: ocupa toda a altura da tela */
-  object-fit: cover; /* Garante que a imagem preencha sem distorção */
-  margin: 0;
+  width: 100%;
+  height: 55vh;
+  object-fit: cover;
+
 }
 
-.image{
-  top: 0;
-  left: 0;
+.image {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  height: 100%;
-  z-index: -1;
+  height: 10vhpx;
+  z-index: 1;
+  margin-bottom: 30px;
   filter: blur(8px);
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
+
 
 #horario {
-  text-align: center;
-  font-size: 3em;
-  margin-bottom: -30vh;
-  margin-top: -50%;
-  color: #111111;
-  z-index: 1;
+  position: absolute;
+  top: -50px; /* Ajuste para mover o título acima da imagem */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajusta a centralização */
+  font-size: 6em;
+  color: #ffffff;
+  z-index: 2; /* Garante que o título fique acima da imagem */
 }
 
 .error-message {
@@ -42,7 +45,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: -40px;
 }
 
 th,

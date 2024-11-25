@@ -82,26 +82,19 @@ const Notification: React.FC = () => {
                 ) : (
                     notificacoes.map((notificacao) => (
                         <div key={notificacao.id} className="cards">
-            <div className="tools">
-              <div className="circle">
-                <span className="red box"></span>
-              </div>
-              <div className="circle">
-                <span className="yellow box"></span>
-              </div>
-              <div className="circle">
-                <span className="green box"></span>
-              </div>
-            </div>
-            <div className="card__content"></div>
-                                <div className='notititle'>{notificacao.linha}</div>
-                                <div className='notibody'>{notificacao.mensagem}</div>
-                                <div className='notibody'>Tipo: {notificacao.tipo}</div>
-                                <div className='notibody'>
-                                    Data de envio:{' '}
-                                    {notificacao.data_envio
-                                        ? new Date(notificacao.data_envio).toLocaleString()
-                                        : 'Data indisponível'}
+
+                            <div className="card">
+
+                                <div className="card-details">
+                                    <p className="text-title"><div className='notititle'>{notificacao.linha}</div></p>
+                                    <p className="text-body">{notificacao.mensagem}</p>
+                                    <p className="text-body">{notificacao.tipo}</p>
+
+                                        Data de envio:{' '}
+                                        {notificacao.data_envio 
+                                            ? new Date(notificacao.data_envio).toLocaleDateString()
+                                            : 'Data indisponível'}
+                                    </div>
                                 </div>
                             </div>
                     ))
