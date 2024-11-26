@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../client/supabaseClient";
+import { Link } from "react-router-dom";
 import "../../styles/Login-SignUp.css";
+
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -81,7 +83,7 @@ const Login: React.FC = () => {
             {error && <div style={{ color: "red", padding: "10px 0",}}>{error}</div>}
 
             <div className="flex-row">
-              <span className="span">Esqueceu a senha?</span>
+              <span className="span"><Link to="/forgot-password">Esqueceu a senha?</Link></span>
             </div>
 
             <button className="button-submit">Conectar</button>

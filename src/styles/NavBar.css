@@ -149,12 +149,6 @@ ul {
     box-shadow: 0 0 0 0 black;
 }
 
-.profile-button:hover {
-    transform: translateY(-2px) translateX(-2px);
-    box-shadow: 1px 4px 0 0;
-    color: purple;
-}
-
 .link{
     margin-top: 5px;
     margin-left: 20px;

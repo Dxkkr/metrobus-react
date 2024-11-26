@@ -23,14 +23,18 @@ const Profile: React.FC = () => {
 
       if (user) {
         const { data: userProfile, error: dbError } = await supabase
-        .from("profiles")
-        .select("*")
-        .eq("id", user.id)
-        .single();
+          .from("profiles")
+          .select("*")
+          .eq("id", user.id)
+          .limit(1); // Evita erro de múltiplos registros
 
         if (dbError) throw dbError;
 
-        setUser({ ...user, ...userProfile });
+        if (userProfile && userProfile.length > 0) {
+          setUser({ ...user, ...userProfile[0] }); // Retorna o primeiro registro encontrado
+        } else {
+          throw new Error("Nenhum perfil correspondente encontrado.");
+        }
       } else {
         setError("Usuário não encontrado.");
       }
