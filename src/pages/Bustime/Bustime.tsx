@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../../client/supabaseClient';
 import '../../styles/Bustime.css';
-import fotoOnibus from '../../images/images.jpg';
 interface HorarioSemanal {
   horario_partida: string;
   horario_chegada: string;
@@ -15,8 +14,8 @@ function Bustime() {
   const [selectedLinha, setSelectedLinha] = useState<string | null>(null); // Linha selecionada
   const [modalHorarios, setModalHorarios] = useState<HorarioSemanal[]>([]); // Horários da linha no modal
   const [error, setError] = useState<string | null>(null);
-  const [isInViewport, setIsInViewport] = useState(false); // Novo estado para o efeito
-  const modalRef = useRef<HTMLDivElement | null>(null); // Referência ao modal
+  const [isInViewport, setIsInViewport] = useState(false);
+  const modalRef = useRef<HTMLDivElement | null>(null);
 
   const fetchHorarios = async () => {
     try {
@@ -55,13 +54,12 @@ function Bustime() {
     }
   };
 
-  // Observa se o modal está no viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInViewport(entry.isIntersecting); // Atualiza o estado quando o modal entra/sai do viewport
+        setIsInViewport(entry.isIntersecting);
       },
-      { threshold: 0.1 } // Ativa quando 10% do modal está visível
+      { threshold: 0.1 }
     );
 
     if (modalRef.current) {
@@ -89,12 +87,8 @@ function Bustime() {
   };
 
   return (
+    
     <section className="Times">
-      <div className="image">
-        <div id="blur">
-          <img className="bus_photo" src={fotoOnibus} alt="Foto do ônibus" />
-        </div>
-      </div>  
       <h1 id="horario">Horário de Ônibus</h1>
 
       {/* Mensagem de Erro */}
@@ -104,7 +98,7 @@ function Bustime() {
       <table>
         <thead>
           <tr>
-            <th className='❤'>Linha</th>
+            <th>Linha</th>
           </tr>
         </thead>
         <tbody>
@@ -121,8 +115,9 @@ function Bustime() {
         <div className="modal-overlay">
           <div
             className={`modal-content ${isInViewport ? 'hover-effect' : ''}`}
-            ref={modalRef} // Adicionando referência ao modal
-          >
+            ref={modalRef}>
+
+              {/* Bolinhas */}
             <div className="tools">
               <div className="circle">
                 <span className="red box"></span>
@@ -134,6 +129,9 @@ function Bustime() {
                 <span className="green box"></span>
               </div>
             </div>
+
+
+        {/* Conteudo do Modal */}
             <div className="card__content"></div>
             <h2 className="nome-linha">Linha: {selectedLinha}</h2>
             <button onClick={closeModal} className="close-modal-btn">

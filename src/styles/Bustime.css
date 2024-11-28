@@ -1,53 +1,16 @@
 .Times {
   width: 100%;
   max-width: 100%;
-  margin-top: -4px;
+  margin-top: 0;
   padding: 0;
   border-radius: 0;
 }
 
-.bus_photo {
-  width: 100%;
-  height: 55vh;
-  object-fit: cover;
-
-}
-
-.image {
-  position: relative;
-  width: 100%;
-  height: 55vh;
-  overflow: hidden;
-  z-index: 1;
-  margin-bottom: 30px;
-}
-
-#blur {
-  filter: blur(8px);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.bus_photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-#horario{
-  z-index: 1;
-}
-
 #horario {
+  margin-right: 6em;
+  margin-bottom: -20vh;
   font-size: 6em;
-  margin-right: 132vh;
-  margin-top: -20vh;
-  color: #ffffff;
+  color: black;
 }
 
 .error-message {
@@ -60,7 +23,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: -40px;
+  margin-top: 0;
 }
 
 th,
@@ -89,7 +52,6 @@ p {
   font-style: italic;
   color: #888;
 }
-
 
 .modal-overlay {
   position: fixed;
@@ -134,13 +96,13 @@ p {
   background-color: #f0f0f0;
 }
 
-.nome-linha{
-  margin-top: 7vh;
-  margin-bottom: -5%;
+.nome-linha {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
   text-align: center;
 }
 
-.circle{
+.circle {
   margin-bottom: 2%;
   margin-top: -10px;
 }
@@ -157,7 +119,7 @@ p {
 }
 
 .modal-content.hover-effect {
-  transform: scale(1.05); /* Amplia levemente */
+  transform: scale(1.05);
   opacity: 1;
-  background-color: #f0f8ff; /* Altera cor de fundo */
+  background-color: #f0f8ff;
 }
